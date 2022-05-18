@@ -1,0 +1,25 @@
+create database kubsu_backend;
+
+use kubsu_backend;
+
+create table request (
+	id int not null auto_increment primary key,
+	name varchar(255) not null,
+	email varchar(255),
+	birthday year,
+	sex varchar(15),
+	count_hands int,
+	bio text,
+);
+
+create table superpowers (
+	id int not null auto_increment primary key,
+	name varchar(255) not null,
+);
+
+create table superpower_request (
+	superpower_id int,
+	request_id int,
+	foreign key (superpower_id) references superpowers(id),
+	foreign key (request_id) references request(id),
+);

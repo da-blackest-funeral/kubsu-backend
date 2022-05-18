@@ -7,7 +7,6 @@ $validator = new Validator();
 $db = new DB();
 
 if (!empty($_POST)) {
-    echo '<pre>';
     $params = array_diff_key($_POST, array_flip(['superpowers', 'check']));
 
     $validator->validate($params);
@@ -16,8 +15,6 @@ if (!empty($_POST)) {
       die();
     }
 
-//    var_dump($_POST);
-    echo '</pre>';
     $db->insert($params, 'request');
     $id = $db->maxRequestId();
     if (isset($_POST['superpowers'])) {
@@ -26,10 +23,6 @@ if (!empty($_POST)) {
         }
     }
 }
-
-//var_dump($db->getSuperpowers());
-
-//echo 'hello world!';
 
 ?>
 
